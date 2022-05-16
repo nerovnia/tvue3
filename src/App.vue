@@ -2,11 +2,10 @@
 <div class="app">
   <div>
     <post-form @create="createPost"/>
-    <post-list :posts="posts"/>
+    <post-list :posts="posts" @remove="removePost"/>
   </div>
 
 </div>
-<button>Click me!</button>
 </template>
 
 <script>
@@ -29,6 +28,9 @@ export default {
   methods: {
     createPost(post) {
       this.posts.push(post);
+    },
+    removePost(post) {
+      this.posts = this.posts.filter(p => p.id !== post.id)
     }
   }
 }
